@@ -1,11 +1,29 @@
-<!-- <div ng-controller="usersController">
-    <ul id="users-list" class="list-group">
-        <li class="list-group-item">USUARIO:</li>
-        <li class="list-group-item list-group-item-dark">USUARIO:</li>
-        <li class="list-group-item" ng-repeat="data in data">{{ data }}</li>
-    </ul>
-</div> -->
+<style>
+    .user-avatar {
+        width: 100%;
+        height: auto;
+        max-width: 90px;
+        padding: 0 10px 0 0;
+    }
+</style>
 
-<ul id="users-list" class="list-group">
-    <li class="list-group-item" ng-repeat="data in data">{{ data }}</li>
-</ul>
+<div class="d-flex align-items-center justify-content-center" style="min-height: 10vh; width: 100%;">
+    <h2 class="">Listagem de usuários</h2>
+</div>
+
+<div class="container-fluid">
+    <div class="d-flex flex-row border rounded p-0 m-2 align-items-center"  ng-repeat="data in data"  style="background-color: white;">
+        <img src="{{ data.avatar }}" class="card-img user-avatar" alt="avatar do usuario">
+        <div class="w-100 flex-grow-1 m-0 p-2">
+            <h3 class="m-0">{{ data.first_name }} {{ data.last_name }}</h3>
+            <p class="m-0">{{ data.email }}</p>
+        </div>
+        <div class="d-flex p-2">
+            <a href="#/" data-id="{{ data.id }}" class="mx-2">Editar</a>
+            <a href="#/" data-id="{{ data.id }}" class="mx-2">Excluir</a>
+        </div>
+    </div>
+    <!-- <p>CONTEUDO: {{ pagination }}</p> -->
+    <!-- <p>DADOS: {{ data }}</p> -->
+</div>
+

@@ -1,8 +1,42 @@
-<form>
-    <p style="color: red;"></p>
-    USERID: <input type="text" ng-model="user.id"/>
-    <br>
-    PASSWORD: <input type="password" ng-model="user.passKey"/>
-    <br>
-    <button ng-click="doSubmit(user)">LOGIN</button>
-</form>
+<div class="row justify-content-center align-items-center w-100 mt-5">
+    <div class="col-12 col-md-6 col-xl-4 border rounded p-4" style="background-color: white;">
+        <div class="alert alert-secondary">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <span>USUARIO INVALIDO (sugerido no pdf):</span>
+                    <p class="p-0 m-0 mt-3"><b>email: </b>peter@klaven</p>
+                    <p class="p-0 m-0"><b>senha: </b>cityslicka</p>
+                </div>
+                <div class="col-12 mt-3 col-md-6 mt-md-0">
+                    <span>USUARIO VALIDO (retorna um token da api):</span>
+                    <p class="p-0 m-0 mt-3"><b>email: </b>eve.holt@reqres.in</p>
+                    <p class="p-0 m-0"><b>senha: </b>cityslicka</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-center">Login</h2>
+        <form name="form" ng-submit="form.$valid && vm.login()" novalidate>
+            <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.email.$invalid }">
+                <label for="email">Digite seu e-mail</label>
+                <input type="email" name="email" class="form-control" ng-model="vm.email" required />
+                <div ng-messages="form.$submitted && form.email.$error" class="help-block">
+                    <div class="text-danger" ng-message="required">O campo e-mail obrigatório!</div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.password.$invalid }">
+                <label for="password">Digite sua senha:</label>
+                <input type="password" name="password" class="form-control" ng-model="vm.password" required />
+                <div ng-messages="form.$submitted && form.password.$error" class="help-block">
+                    <div class="text-danger" ng-message="required">O campo Senha é obrigatório!</div>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button ng-disabled="vm.loading" class="btn btn-secondary w-100">Login</button>
+                <img ng-if="vm.loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+            <div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
+        </form>
+        
+    </div>
+</div>
