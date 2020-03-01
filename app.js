@@ -1,5 +1,5 @@
 (function () {
-//.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngMockE2E'])
+   
     angular
         .module('app', ['ui.router', 'ngMessages', 'ngStorage'])
         .factory('AuthenticationService', Service)
@@ -54,6 +54,14 @@
                 $location.path('/login');
             }
 
+            if ($localStorage.currentUser) {
+                // exibe o item do menu para deslogar
+                document.querySelector("#logout-menu").classList.remove('d-none');
+            } else {
+                // exibe o item do menu para deslogar
+                document.querySelector("#logout-menu").classList.add('d-none');
+            }
+
         });
     }
 
@@ -77,7 +85,7 @@
                         $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
 
                         // exibe o item do menu para deslogar
-                        document.querySelector("#logout-menu").classList.remove('d-none');
+                        //document.querySelector("#logout-menu").classList.remove('d-none');
 
                         // execute callback with true to indicate successful login
                         callback(true);

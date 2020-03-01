@@ -10,9 +10,13 @@
 <div class="d-flex align-items-center justify-content-center" style="min-height: 10vh; width: 100%;">
     <h2 class="">Listagem de usuários</h2>
 </div>
-
-<div class="container-fluid">
-    <div class="d-flex flex-row border rounded p-0 m-2 align-items-center"  ng-repeat="data in data"  style="background-color: white;">
+<div class="w-100 d-flex justify-content-end mt-3">
+    <form class="form-inline">
+        <input id="search-input" class="form-control mr-sm-2 d-none" style="min-width: 300px;" ng-model="filterUser" type="search" placeholder="Buscar..." aria-label="Search">
+    </form>
+</div>
+<div class="container-fluid p-0">
+    <div class="d-flex flex-row border rounded p-0 m-2 align-items-center"  ng-repeat="data in data | filter: filterUser"  style="background-color: white;">
         <img src="{{ data.avatar }}" class="card-img user-avatar" alt="avatar do usuario">
         <div class="w-100 flex-grow-1 m-0 p-2">
             <h3 class="m-0">{{ data.first_name }} {{ data.last_name }}</h3>
@@ -22,6 +26,11 @@
             <a href="#/" data-id="{{ data.id }}" class="mx-2">Editar</a>
             <a href="#/" data-id="{{ data.id }}" class="mx-2">Excluir</a>
         </div>
+    </div>
+    <div id="pagination-btns" class="w-100 p-2 align-items-center justify-content-end d-none">
+        <button id="btn-prev" class="btn btn-link" ng-click="changePage( pagination.page, '-1', pagination.total_pages )"><img src="/imgs/navigate_before-24px.svg" alt="voltar"></button>
+        <span>{{ pagination.page }} de {{ pagination.total_pages }}</span>
+        <button id="btn-next" class="btn btn-link" ng-click="changePage( pagination.page, '+1', pagination.total_pages )"><img src="/imgs/navigate_next-24px.svg" alt="avançar"></button>
     </div>
     <!-- <p>CONTEUDO: {{ pagination }}</p> -->
     <!-- <p>DADOS: {{ data }}</p> -->
