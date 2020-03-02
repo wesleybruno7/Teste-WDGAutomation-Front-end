@@ -73,7 +73,7 @@
 
             $http({
                 method : "PUT",
-                url : "https://reqres.in/api/users/" + data.id
+                url : "https://reqres.in/api/users/" + data.id + "?delay=2"
                 }).then(function successCallback(response) {
 
                     let res = response.data;
@@ -87,7 +87,7 @@
                         DADOS DO USUARIO
                         ID: ${data.id}
                         Nome: ${data.first_name} ${data.last_name} 
-                        URL chamada: https://reqres.in/api/users/${data.id}
+                        URL chamada: https://reqres.in/api/users/${data.id}?delay=2
                     `);
 
                 }, function errorCallback(response) {
@@ -101,7 +101,7 @@
 
             $http({
                 method : "DELETE",
-                url : "https://reqres.in/api/users/" + data.id
+                url : "https://reqres.in/api/users/" + data.id + "?delay=2"
                 }).then(function successCallback(response) {
 
                     let res = response.data;
@@ -115,7 +115,7 @@
                         DADOS DO USUARIO
                         ID: ${data.id}
                         Nome: ${data.first_name} ${data.last_name} 
-                        URL chamada: https://reqres.in/api/users/${data.id}
+                        URL chamada: https://reqres.in/api/users/${data.id}?delay=2
                     `);
 
                     let removeItem = $rootScope.data.findIndex(x => x.id == data.id);
@@ -135,7 +135,7 @@
 
                 $http({
                     method : "GET",
-                    url : "https://reqres.in/api/users?delay=1&page="+ changeTo
+                    url : "https://reqres.in/api/users?delay=2&page="+ changeTo
                     }).then(function successCallback(response) {
                 
                         $rootScope.pagination = {

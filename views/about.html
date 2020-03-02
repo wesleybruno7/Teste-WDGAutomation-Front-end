@@ -1,0 +1,81 @@
+<div class="container-fluid p-0">
+    <section class="">
+        <div class="vh-50 bg-imgs bg-fixed center-flex" style="background-image: url('/imgs/home-color.png');">
+            <div class="overlay"></div>
+            <div class="text-white" style="z-index: 1;">
+                <h1 class="font-weight-bold">Sobre o teste</h1>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <section class="my-4 pb-2 border-bottom">
+                <h2 class="text-center py-3">Linguagens utilizadas</h2>
+
+                <h3>HTML5</h3>
+                <p>
+                    Primeiramente utilizei o HTML 5 para criar as estruturas/conteúdos básicos.
+                </p>
+
+                <h3>CSS3</h3>
+                <p>
+                    Com CSS3 criei um custom.css para definir estilos específicos que não consegui apenas 
+                    utilizando Bootstrap 4.
+                </p>
+
+                <h3>Javascript</h3>
+                <p>
+                    Para executar ações ou interações utilizei o Javascript como mostrar/ocultar 
+                    conteúdos, preencher campos, etc.
+                </p>
+            </section>
+            
+            <section class="my-3 pb-2 border-bottom">
+                <h2 class="text-center py-3">Conceitos, frameworks e outros</h2>
+
+                <h3 class="pt-3">Arquitetura  MVC (Model-View-Controller)</h3>
+                <p>
+                    Neste projeto tentei aplicar a Arquitetura MVC para separar e organizar melhor o código 
+                    (criando VIEWs para o conteúdo em HTML/CSS/Angular, CONTROLLERs para funções e regras 
+                    de negócio em Javascript/Angular, apenas a MODELs não utilizei, pois de imediato não 
+                    tínhamos a necessidade de comunicar com um banco de dados, as chamadas de API ficaram 
+                    nas CONTROLLERs mesmo).
+                </p>
+
+                <h3>Bootstrap 4</h3>
+                <p>
+                    Utilizei o Bootstrap 4 para estilizar quase todos os conteúdos/páginas, utilizei 
+                    também o esquema de modal do proprio Bootstrap quando altera/exclui um usuário.
+                </p>
+
+                <h3>Angular.js</h3>
+                <p>
+                    Não conhecia este framework até  o início deste teste, acabei estudando-o no 
+                    final de semana e consegui aplicar algumas dinâmicas e esquemas para single page como solicitado.
+                    Com ele fiz o esquema de rotas, criei algumas funções/services.
+                    No projeto acabei utilizando o JSON Web Token (JWT) em conjunto para o esquema de login para evitar 
+                    que um usuário sem credencial acesse os conteúdos privados da Single-Page Application(SPA).
+                </p>
+
+                <h3>Jquery</h3>
+                <p>
+                    A principio estava utilizando o Jquery para utilizar o ajax, mas depois acabei 
+                    substituindo pelo $http.get (por exemplo) do Angular.js.
+                    Ficou no projeto apenas devido a necessidade que o Bootstrap utiliza-se do jquery
+                    para realizar algumas ações.
+                </p>
+
+                <h3>Sites responsivos</h3>
+                <p>
+                    Tentei deixar os conteudos responsivos (principal motivo de utilizar o Bootstrap 4, 
+                    pois ele facilita a criação e estilização de sites responsivos).
+                </p>
+            </section>
+
+            <section class="my-3 pb-2">
+                <h2 class="text-center py-3">Links</h2>
+                <span>Documentação da: </span><a href="https://reqres.in/">API de dados</a><br>
+                <span>Documentação do: </span><a href="https://getbootstrap.com/">Bootstrap 4</a>
+            </section>
+
+        </div>
+    </section>
+</div>

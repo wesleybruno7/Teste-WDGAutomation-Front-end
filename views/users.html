@@ -1,6 +1,9 @@
-<div class="d-flex align-items-center justify-content-center" style="min-height: 10vh; width: 100%;">
-    <h2 class="text-center pt-4">Listagem de usuários</h2>
+<div class="vh-20 bg-imgs bg-secondary center-flex">
+    <div class="text-white" style="z-index: 1;">
+        <h1 class="font-weight-bold">Listagem de usuários</h1>
+    </div>
 </div>
+
 <div class="w-100 d-flex justify-content-center mt-3">
     <form class="w-100 form-inline justify-content-end">
         <input id="search-input" class="form-control mx-2 d-none ajuste-input-busca" ng-model="filterUser" type="search" placeholder="Buscar..." aria-label="Search">
@@ -25,8 +28,6 @@
         <span>{{ pagination.page }} de {{ pagination.total_pages }}</span>
         <button id="btn-next" class="btn btn-link" ng-click="changePage( pagination.page, '+1', pagination.total_pages )"><img src="/imgs/navigate_next-24px.svg" alt="avançar"></button>
     </div>
-    <!-- <p>CONTEUDO: {{ pagination }}</p> -->
-    <!-- <p>DADOS: {{ data }}</p> -->
 </div>
 
 <div id="edit-modal" class="modal" tabindex="-1" role="dialog">

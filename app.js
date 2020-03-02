@@ -31,10 +31,16 @@
                 controller: 'usersController',
                 controllerAs: 'vm',
             })
+            .state('about', {
+                url: '/about',
+                templateUrl: 'views/about.html',
+                controller: 'aboutController',
+                controllerAs: 'vm',
+            })
             .state('404', {
                 url: '/404',
                 templateUrl: 'views/404.html',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
             })
 
     }
@@ -74,9 +80,14 @@
         return service;
 
         function Login(username, password, callback) {
-            $http.post('https://reqres.in/api/login', { username: username, password: password })
+console.log(username);
+            if(username != 'eve.holt@reqres.in') {
+                username = 'peter@klaven';
+            }
+
+            $http.post('https://reqres.in/api/login?delay=2', { username: username, password: password })
                 .success(function (response) {
-                    
+                 console.log(response);   
                     if (response.token) {
                         // armazena username e o token no local storage para continuar logado quando ocorrer a troca de paginas
                         $localStorage.currentUser = { username: username, token: response.token };
@@ -90,8 +101,12 @@
                         //  executa o callback quando for false para indicar que nao esta logado
                         callback(false);
                     }
+                })
+                .error(function(error){
+                    callback(false);
                 });
-        }
+
+            }
 
         function Logout() {
             // remove usuario do local storage e limpa o header de autenticacao http

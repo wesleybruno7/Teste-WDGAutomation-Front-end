@@ -7,6 +7,47 @@
 .ajuste-input-busca {
     min-width: auto;
 }
+.overlay {
+    background-color: rgba(0,0,0,0.3);
+    position: absolute;
+    width: 100%;
+    height: 50vh;
+}
+.bg-imgs {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bg-fixed {
+    background-attachment: fixed;
+}
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.vh-50 {
+    height: 50vh;
+}
+.vh-20 {
+    height: 20vh;
+}
+.img-erro-responsive {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+.center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
 @media (min-width: 576px) {
     .ajuste-input-busca {
         min-width: 300px;

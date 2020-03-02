@@ -23,7 +23,7 @@
                 if (result === true) {
                     $location.path('/');
                 } else {
-                    vm.error = 'email or password is incorrect';
+                    vm.error = 'Email ou senha invalido!';
                     vm.loading = false;
                 }
             });
