@@ -12,9 +12,11 @@
         //oculta os botoes de proxima pagina
         document.querySelector('#pagination-btns').classList.remove('d-flex');
         document.querySelector('#pagination-btns').classList.add('d-none');
+
         //oculta o input de busca/filtro
         document.querySelector('#search-input').classList.remove('d-flex');
         document.querySelector('#search-input').classList.add('d-none');
+
         //desativa e oculta o botao para voltar pagina
         document.querySelector('#btn-prev').disabled = true;
         document.querySelector('#btn-prev').style.opacity = '0';
@@ -28,8 +30,6 @@
                 url : "https://reqres.in/api/users?delay=2"
                 }).then(function successCallback(response) {
             
-                    // console.log(response.data.data);
-                    // console.log(response.status);
                     $rootScope.pagination = {
                         "page": response.data.page,
                         "per_page": response.data.per_page,
@@ -41,6 +41,7 @@
                     //mostra os botoes de proxima pagina apos carregar os itens
                     document.querySelector('#pagination-btns').classList.remove('d-none');
                     document.querySelector('#pagination-btns').classList.add('d-flex');
+
                     //mostra o input de busca/filtro apos carregar os itens
                     document.querySelector('#search-input').classList.remove('d-none');
                     document.querySelector('#search-input').classList.add('d-flex');
@@ -53,9 +54,8 @@
         }
 
         $rootScope.transferDataToEditModal = function(data) {
-            // console.log(data['id']);
+
             vm.data = data;
-            // console.log(vm.data);
 
             document.querySelector('[name=first-name]').value = data.first_name;
             document.querySelector('[name=last-name]').value = data.last_name;
@@ -63,14 +63,11 @@
         }
 
         $rootScope.transferDataToDeleteModal = function(data) {
-
-            // console.log(data.id);
             vm.data = data;
-            //console.log(vm.data);
         }
 
         $rootScope.updateUser = function(data) {
-            // console.log(data.id);
+
             $http({
                 method : "PUT",
                 url : "https://reqres.in/api/users/" + data.id
@@ -99,8 +96,6 @@
 
         $rootScope.deleteUser = function(data) {
 
-            console.log(data.id);
-
             $http({
                 method : "DELETE",
                 url : "https://reqres.in/api/users/" + data.id
@@ -121,7 +116,6 @@
                     `);
 
                     let removeItem = $rootScope.data.findIndex(x => x.id == data.id);
-                    // console.log(removeItem);
                     $rootScope.data.splice(removeItem, 1);
 
                 }, function errorCallback(response) {
@@ -152,6 +146,7 @@
                         //mostra os botoes de proxima pagina apos carregar os itens
                         document.querySelector('#pagination-btns').classList.remove('d-none');
                         document.querySelector('#pagination-btns').classList.add('d-flex');
+                        
                         //mostra o input de busca/filtro apos carregar os itens
                         document.querySelector('#search-input').classList.remove('d-none');
                         document.querySelector('#search-input').classList.add('d-flex');
