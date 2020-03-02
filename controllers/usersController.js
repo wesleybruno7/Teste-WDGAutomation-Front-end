@@ -51,7 +51,30 @@
             );
 
         }
+        $rootScope.deleteUser = function(id) {
 
+            console.log(id);
+
+            $http({
+                method : "GET",
+                url : "https://reqres.in/api/users/" + id
+                }).then(function successCallback(response) {
+            
+                    alert(`
+                        RETORNO: Status: ${response.status}, 
+                        Id: ${id-1}, 
+                        Usuario: ${$rootScope.data[id-1].first_name} ${$rootScope.data[id-1].last_name} 
+                        excluido com sucesso!
+                    `);
+                    let arrUsers = $rootScope.data 
+                    arrUsers.splice(id-1, 1);
+                    $rootScope.data = arrUsers;
+
+                }, function errorCallback(response) {
+                    alert("Retorno: status " + response.status + ' - Msg: ' + response.statusText);
+                }
+            );
+        }
         $rootScope.changePage = function (current, operator, max) {
 
             let changeTo = eval(current + operator);
