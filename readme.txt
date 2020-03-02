@@ -1,4 +1,7 @@
-para executar, é necessario instalar o pacote http-server:
+primeiramente, é necessario ter o node.js instalado no computador:
+https://nodejs.org/en/
+
+Se ja tiver o node, basta instalar o pacote http-server no cumputado caso ja não tenha instalado.
 npm install http-server -g
 
 depois acesse a pasta do projeto pelo prompt e execute o comando:

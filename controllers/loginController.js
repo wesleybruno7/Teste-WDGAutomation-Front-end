@@ -13,7 +13,7 @@
         initController();
 
         function initController() {
-            // reset login status
+            // reseta o status do login
             AuthenticationService.Logout();
         };
 
