@@ -76,28 +76,25 @@
         function Login(username, password, callback) {
             $http.post('https://reqres.in/api/login', { username: username, password: password })
                 .success(function (response) {
-                    // login successful if there's a token in the response
+                    
                     if (response.token) {
-                        // store username and token in local storage to keep user logged in between page refreshes
+                        // armazena username e o token no local storage para continuar logado quando ocorrer a troca de paginas
                         $localStorage.currentUser = { username: username, token: response.token };
 
-                        // add jwt token to auth header for all requests made by the $http service
+                        // adidiona o jwt token de autenticacao ao header para todas as requests feitas pelo $http service
                         $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
 
-                        // exibe o item do menu para deslogar
-                        //document.querySelector("#logout-menu").classList.remove('d-none');
-
-                        // execute callback with true to indicate successful login
+                        // executa o callback quando for true para indicar que esta logado
                         callback(true);
                     } else {
-                        // execute callback with false to indicate failed login
+                        //  executa o callback quando for false para indicar que nao esta logado
                         callback(false);
                     }
                 });
         }
 
         function Logout() {
-            // remove user from local storage and clear http auth header
+            // remove usuario do local storage e limpa o header de autenticacao http
             delete $localStorage.currentUser;
             $http.defaults.headers.common.Authorization = '';
 

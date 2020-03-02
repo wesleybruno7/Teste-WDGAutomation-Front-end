@@ -9,6 +9,9 @@
 
         $rootScope.activetab = $location.path();
 
+        //limpa o objeto se ja estiver carregado alguma informacao quando chamada a controller
+        $rootScope.data = '';
+
         //oculta os botoes de proxima pagina
         document.querySelector('#pagination-btns').classList.remove('d-flex');
         document.querySelector('#pagination-btns').classList.add('d-none');
@@ -171,7 +174,6 @@
                     document.querySelector('#btn-next').disabled = false;
                     document.querySelector('#btn-next').style.opacity = '1';
                 }
-                $rootScope.data = '';
 
             }
 
