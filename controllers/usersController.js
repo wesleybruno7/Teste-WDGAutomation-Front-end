@@ -51,30 +51,85 @@
             );
 
         }
-        $rootScope.deleteUser = function(id) {
 
-            console.log(id);
+        $rootScope.transferDataToEditModal = function(data) {
+            // console.log(data['id']);
+            vm.data = data;
+            // console.log(vm.data);
+
+            document.querySelector('[name=first-name]').value = data.first_name;
+            document.querySelector('[name=last-name]').value = data.last_name;
+
+        }
+
+        $rootScope.transferDataToDeleteModal = function(data) {
+
+            // console.log(data.id);
+            vm.data = data;
+            //console.log(vm.data);
+        }
+
+        $rootScope.updateUser = function(data) {
+            // console.log(data.id);
+            $http({
+                method : "PUT",
+                url : "https://reqres.in/api/users/" + data.id
+                }).then(function successCallback(response) {
+
+                    let res = response.data;
+                    $('#edit-modal').modal('hide');
+
+                    alert(`
+                        RETORNO:
+                        Status: ${response.status},
+                        Usuario alterado com sucesso!
+                        
+                        DADOS DO USUARIO
+                        ID: ${data.id}
+                        Nome: ${data.first_name} ${data.last_name} 
+                        URL chamada: https://reqres.in/api/users/${data.id}
+                    `);
+
+                }, function errorCallback(response) {
+                    alert("Retorno: status " + response.status + ' - Msg: ' + response.statusText);
+                }
+            );
+
+        }
+
+        $rootScope.deleteUser = function(data) {
+
+            console.log(data.id);
 
             $http({
-                method : "GET",
-                url : "https://reqres.in/api/users/" + id
+                method : "DELETE",
+                url : "https://reqres.in/api/users/" + data.id
                 }).then(function successCallback(response) {
-            
+
+                    let res = response.data;
+                    $('#delete-modal').modal('hide');
+
                     alert(`
-                        RETORNO: Status: ${response.status}, 
-                        Id: ${id-1}, 
-                        Usuario: ${$rootScope.data[id-1].first_name} ${$rootScope.data[id-1].last_name} 
-                        excluido com sucesso!
+                        RETORNO:
+                        Status: ${response.status},
+                        Usuario excluido com sucesso!
+                        
+                        DADOS DO USUARIO
+                        ID: ${data.id}
+                        Nome: ${data.first_name} ${data.last_name} 
+                        URL chamada: https://reqres.in/api/users/${data.id}
                     `);
-                    let arrUsers = $rootScope.data 
-                    arrUsers.splice(id-1, 1);
-                    $rootScope.data = arrUsers;
+
+                    let removeItem = $rootScope.data.findIndex(x => x.id == data.id);
+                    // console.log(removeItem);
+                    $rootScope.data.splice(removeItem, 1);
 
                 }, function errorCallback(response) {
                     alert("Retorno: status " + response.status + ' - Msg: ' + response.statusText);
                 }
             );
         }
+
         $rootScope.changePage = function (current, operator, max) {
 
             let changeTo = eval(current + operator);

@@ -23,8 +23,8 @@
             <p class="m-0">{{ data.email }}</p>
         </div>
         <div class="d-flex p-2">
-            <button data-id="{{ data.id }}" class="btn btn-link mx-2" data-toggle="modal" data-target="#edit-modal" ng-click="">Editar</buttom>
-            <button data-id="{{ data.id }}" class="btn btn-link mx-2" ng-click="deleteUser( data.id )">Excluir</buttom>
+            <button class="btn btn-link mx-2" data-toggle="modal" data-target="#edit-modal" ng-click="transferDataToEditModal(data)">Editar</buttom>
+            <button class="btn btn-link mx-2" data-toggle="modal" data-target="#delete-modal" ng-click="transferDataToDeleteModal(data)">Excluir</buttom>
         </div>
     </div>
     <div id="pagination-btns" class="w-100 p-2 align-items-center justify-content-end d-none">
@@ -40,7 +40,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Atualizar dados:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -64,10 +64,30 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark">Save changes</button>
+                <button id="btn-save-changes" type="button" class="btn btn-dark" ng-click="updateUser( vm.data )">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
 </div>
+
+<div id="delete-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmação de exclusão</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" ng-click="deleteUser( vm.data )">Excluir</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 

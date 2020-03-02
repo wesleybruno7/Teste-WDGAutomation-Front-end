@@ -9,7 +9,7 @@
     function config($stateProvider, $urlRouterProvider) {
 
         // rota default
-        $urlRouterProvider.otherwise("/"); 
+        $urlRouterProvider.otherwise("/404"); 
 
         // rotas
         $stateProvider

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Developer Test</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="pré-requisitos">Pré-requisitos</h2>
+<p><em>A solução deve ser publicada no <strong>github</strong> e o link do repositório enviado para a avaliação</em>.<br>
+No repositório <strong>deve</strong> existir um arquivo <code>readme</code> com informações de como executar a aplicação.</p>
+<p><strong>Não utilizar templates prontos</strong>.<br>
+<em><strong>Pode utilizar</strong></em> biblioteca de UI, exemplos: materialize, angular-ui, bootstrap, material, etc.</p>
+<h2 id="o-que-será-avaliado">O que será avaliado</h2>
+<ul>
+<li>Completude dos requisitos</li>
+<li>Design da arquitetura</li>
+<li>Design do código</li>
+<li><em>User Experience</em></li>
+</ul>
+<h2 id="single-page-app">Single Page App</h2>
+<p>Criar um Single Page Application com a tecnologia que você conhece (<em>Angular</em>, <em>React</em>, <em>CSS</em>, <em>LESS</em>, <em>SASS</em>, etc).</p>
+<p><strong>A aplicação deve contemplar</strong>:</p>
+<ul>
+<li>Autenticação</li>
+<li>Listagem de usuários</li>
+<li>Exclusão de um usuário</li>
+<li>Atualização de um usuário</li>
+<li>Página 404</li>
+</ul>
+<h2 id="api">API</h2>
+<p>A API que deverá ser usada para obter e atualizar os dados é <code>https://reqres.in/api</code>. Essa é uma API <strong>fake</strong>, os dados não serão realmente salvos ou excluídos.<br>
+<em><strong>Requisito</strong></em>: em qualquer rota API mencionada nesse documento, usar o parâmetro <code>?delay=2</code> para simular latência na chamada.<br>
+Leia a documentação de como funciona essa API em <a href="https://reqres.in/">https://reqres.in/</a>.</p>
+<h2 id="login">Login</h2>
+<p>Mostrar a página de login ao acessar <code>http://&lt;domain&gt;/#/login</code> ou a rota padrão <code>http://&lt;domain&gt;/#/</code>.<br>
+Usar a API <code>POST https://reqres.in/api/login</code></p>
+<pre><code>{
+    "email": "peter@klaven",
+    "password": "cityslicka"
+}
+</code></pre>
+<p>Se a API retornar status 200, navegar para a página de listagem de usuários <code>http://&lt;domain&gt;/#/users</code>. Se a API retornar outro status, mostrar erro e não navegar.</p>
+<p><em><strong>Importante</strong></em>: utilizar o <strong>bearer token</strong> retornado no <em>Header Authorization</em> nas próximas chamadas da API - <em>apesar da API não validar o usuário logado, é requisito fazer isso no código</em>.</p>
+<h2 id="listagem-de-usuários">Listagem de Usuários</h2>
+<p>Mostrar a página de usuários ao acessar <code>http://&lt;domain&gt;/#/users</code>.<br>
+Usar a API <code>GET https://reqres.in/api/users</code>. Essa API retorna os dados paginados, portanto use o parâmetro <code>?page=&lt;NUMERO_PAGINA&gt;</code> para mostrar os dados de outras páginas.</p>
+<p>A rota mostrada no navegador deve ser compatível com os dados mostrados de cada página de <code>users</code>.<br>
+Por exemplo, ao acessar <code>http://&lt;domain&gt;/#/users?page=2</code>, deve-se mostrar os usuários da página 2.</p>
+<p>A página <em><strong>não deve</strong></em> usar <em>Tabela</em> para listar os usuários<br>
+Deve existir um link ou botão em cada usuário listado para ir para a página de edição desse usuário: <code>http://&lt;domain&gt;/#/users/&lt;ID&gt;</code> .</p>
+<h3 id="exclusão-de-usuário">Exclusão de Usuário</h3>
+<p>Na página de listagem, deve existir um botão para excluir o usuário.<br>
+Ao clicar no botão, deve-se confirmar a ação, e caso afirmativa, excluir o usuário através da API <code>DELETE https://reqres.in/api/users/&lt;ID&gt;</code>.</p>
+<h2 id="edição-de-usuário">Edição de Usuário</h2>
+<p>Mostrar a página de edição de usuário ao acessar <code>http://&lt;domain&gt;/#/users/&lt;ID&gt;</code>.<br>
+Usar a API <code>GET https://reqres.in/api/users/&lt;ID&gt;</code> para obter os dados do usuário especifico.</p>
+<p>A página deve permitir editar os campos <code>first_name</code> e <code>last_name</code>.<br>
+Exemplo de chamada para atualizar: <code>PUT https://reqres.in/api/users/&lt;ID&gt;</code></p>
+<pre><code>{
+    "first_name": "morpheus",
+    "last_name": "zion resident"
+}
+</code></pre>
+<h2 id="section">404</h2>
+<p>Se o usuário acessar qualquer rota não mapeada, mostrar uma página de 404.<br>
+Exemplo de rotas 404: <code>http://&lt;domain&gt;/#/cars</code>, <code>http://&lt;domain&gt;/#/admin</code>, <code>http://&lt;domain&gt;/#/users/9999999</code>, etc.</p>
+</div>
+</body>
+
+</html>
